@@ -77,7 +77,7 @@ function(input, output, session) {
       
       
     } else {
-      if (is.null(selected_col_values[["current"]])){
+      if (is.null(selected_col_values[["current"]])) {
         selected_positions <- NULL
       }
       else {
