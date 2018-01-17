@@ -5,11 +5,27 @@ library("shinyjs")
 # devtools::install_github("martinjhnhadley/gene.alignment.tables")
 library("gene.alignment.tables")
 
+
 source("data-processing.R", local = TRUE)
 
 table_width <- 15
 
 function(input, output, session) {
+  output$sequence_legend <- renderPlot({
+    
+    legend_data <- switch(input$selected_protein,
+                          "HBV Pol" = {
+                            sequence_region_colours %>%
+                              filter(appears.in.hbv.pol == TRUE)
+                          },
+                          "HBV S" = {
+                            sequence_region_colours %>%
+                              filter(appears.in.hbv.s == TRUE)
+                          })
+
+    coding_region_legend(data = legend_data)
+    
+  })
   
   alignment.dt.unique.id <- alignment_DT_unique_id()
   
