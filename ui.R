@@ -31,11 +31,11 @@ navbarPage(
       wellPanel(h4("Dear reviewer, this is a beta version of our sequence alignment visualisation tool for drug resistance in HBV. The tool is still under development but you are welcome to test out the user interface. Please note the code lives here: https://github.com/martinjhnhadley/hbv-alignment-viz")),
       wellPanel(
         selectInput(
-          "selected_species",
-          "Selected Species",
+          "selected_protein",
+          "Selected Protein",
           choices = c(
-            "HBV Pol",
-            "HBV long S"
+            "HBV S",
+            "HBV Pol"
           )
         ),
         "Scroll through the sequence visualisation below and select sequences of interest. A table will appear below with information about each of the selected rows.",
