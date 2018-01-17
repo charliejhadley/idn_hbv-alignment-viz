@@ -28,7 +28,7 @@ navbarPage(
       tags$head(tags$style(
         HTML(".cell-border-right{border-right: 1px solid #000}")
       )),
-      wellPanel(h4("Dear reviewer, this is a beta version of our sequence alignment visualisation tool for drug resistance in HBV. The tool is still under development but you are welcome to test out the user interface. Please note the code lives here: https://github.com/martinjhnhadley/hbv-alignment-viz")),
+      wellPanel(h4(HTML("Thank you for visiting our visualisation tool for hepatitis B virus (HBV). This site displays sequence data for HBV Pol and S genes, indicating sites that have been reported in association with resistance associated mutations (RAMs) and vaccine escape mutations (VEMs) in Africa. The sites of mutation are shown in red. Please note the code lives here: <a href='https://github.com/martinjhnhadley/hbv-alignment-viz' target='_blank'>https://github.com/martinjhnhadley/hbv-alignment-viz</a>"))),
       wellPanel(
         selectInput(
           "selected_protein",
