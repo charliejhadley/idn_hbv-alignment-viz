@@ -31,6 +31,20 @@ sequence_region_colours <- tribble(
 )
 
 hbv_table_data <- hbv_sequence_data %>%
-  mutate(colour = plyr::mapvalues(label, from = names(sequence_region_colours),
-                                  to = as.character(sequence_region_colours))) %>%
-  select(-label)
+  mutate(
+    colour = plyr::mapvalues(
+      `Region within protein`,
+      from = sequence_region_colours$label,
+      to = sequence_region_colours$colour
+    )
+  ) %>%
+  select(position, sheet, colour, everything()) %>%
+  mutate(
+    colour = if_else(
+      `Mutation/Variation present in Africa` == "Yes",
+      sequence_region_colours %>%
+        filter(label == "Mutation") %>%
+        select(colour) %>% .[[1]],
+      colour
+    )
+  )
