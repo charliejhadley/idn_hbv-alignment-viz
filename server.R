@@ -12,7 +12,6 @@ table_width <- 15
 
 function(input, output, session) {
   output$sequence_legend <- renderPlot({
-    
     legend_data <- switch(input$selected_protein,
                           "HBV Pol" = {
                             sequence_region_colours %>%
@@ -22,7 +21,7 @@ function(input, output, session) {
                             sequence_region_colours %>%
                               filter(appears.in.hbv.s == TRUE)
                           })
-
+    
     coding_region_legend(data = legend_data)
     
   })
@@ -30,7 +29,6 @@ function(input, output, session) {
   alignment.dt.unique.id <- alignment_DT_unique_id()
   
   output$programmatic_many_DT_UI <- renderUI({
-
     the_datatables <- hbv_table_data %>%
       filter(sheet == input$selected_protein) %>%
       select(position:`Geno E`, -Reference, -sheet) %>%
