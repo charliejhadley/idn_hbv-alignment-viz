@@ -38,9 +38,10 @@ navbarPage(
             "HBV Pol"
           )
         ),
-        "Scroll through the sequence visualisation below and select sequences of interest. A table will appear below with information about each of the selected rows.",
+        "Scroll through the sequence visualisation below and select amino acid sites of interest. A table will appear below with information about each of the selected sites.",
         dataTableOutput("observe_show_inputs"),
-        uiOutput("column_in_programmaticDT_UI")
+        uiOutput("column_in_programmaticDT_UI"),
+        plotOutput("sequence_legend", height = "100px")
       ),
       fluidPage(
         h2("Sequence Visualisation"),
@@ -51,8 +52,8 @@ navbarPage(
             # HTML("<img src=images/cruk-logo.png width='50%'></img>")
           )
         ),
-        uiOutput("programmatic_many_DT_UI"),
-        style = "overflow-y:scroll; max-height: 600px"
+        uiOutput("programmatic_many_DT_UI")
+        # style = "overflow-y:scroll; max-height: 600px"
       )
     )
   ),
