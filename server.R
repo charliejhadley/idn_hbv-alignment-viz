@@ -96,20 +96,41 @@ function(input, output, session) {
       sort()
     
     if (is.null(selected_positions)) {
-      
       show("loading-content")
-      
-      hbv_table_data[0,] %>%
-        datatable()
-    } 
+    }
     
     hide("loading-content")
     
-    hbv_table_data %>%
-      filter(sheet == input$selected_species) %>%
-      select(-sheet, -african.data) %>%
+    data_to_display <- hbv_table_data %>%
+      filter(sheet == input$selected_protein) %>%
+      select(-sheet) %>%
       filter(position %in% selected_positions) %>%
-      datatable()
+      select(-position,-colour)
+    
+    if(nrow(data_to_display) == 0){
+      
+      data_to_display[0,1:2] %>%
+        datatable(options = list("language" = list("emptyTable" = "Please select a position in the table below.")))
+      
+    } else {
+      
+      data_to_display %>%
+        datatable(
+          rownames = FALSE,
+          extensions = 'FixedColumns',
+          selection = "none",
+          options = list(
+            # columnDefs = list(
+            # list(className = 'dt-center', targets = 0:2)
+            autoWidth = TRUE,
+            scrollX = TRUE,
+            fixedColumns = list(leftColumns = 2),
+            dom = "t"
+          )
+        )
+    }
+  
+    
   })
   
   
