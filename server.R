@@ -33,7 +33,8 @@ function(input, output, session) {
 
     the_datatables <- hbv_table_data %>%
       filter(sheet == input$selected_protein) %>%
-      select(position:`Geno E`,-Reference,-sheet) %>%
+      select(position:`Geno E`, -Reference, -sheet) %>%
+      select(position, `Baseline number`, `Protein number`, everything()) %>%
       generate_dts(table.width = table_width,
                    alignment.table.id = alignment.dt.unique.id)
     
