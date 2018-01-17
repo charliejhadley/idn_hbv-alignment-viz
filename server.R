@@ -103,15 +103,20 @@ function(input, output, session) {
       filter(sheet == input$selected_protein) %>%
       select(-sheet) %>%
       filter(position %in% selected_positions) %>%
-      select(-position,-colour)
+      select(-position, -colour)
     
-    if(nrow(data_to_display) == 0){
-      
-      data_to_display[0,1:2] %>%
-        datatable(options = list("language" = list("emptyTable" = "Please select a position in the table below.")))
+    if (nrow(data_to_display) == 0) {
+      data_to_display[0, 1:2] %>%
+        datatable(
+          options = list(
+            "language" = list("emptyTable" = "Please select a position in the table below."),
+            # columnDefs = list(
+            # list(className = 'dt-center', targets = 0:2)
+            dom = "t"
+          )
+        )
       
     } else {
-      
       data_to_display %>%
         datatable(
           rownames = FALSE,
@@ -127,7 +132,7 @@ function(input, output, session) {
           )
         )
     }
-  
+    
     
   })
   
