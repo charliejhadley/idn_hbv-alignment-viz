@@ -32,14 +32,12 @@ function(input, output, session) {
   output$programmatic_many_DT_UI <- renderUI({
 
     the_datatables <- hbv_table_data %>%
-      filter(sheet == input$selected_species) %>%
-      select(-sheet, -african.data) %>%
+      filter(sheet == input$selected_protein) %>%
+      select(position:`Geno E`,-Reference,-sheet) %>%
       generate_dts(table.width = table_width,
                    alignment.table.id = alignment.dt.unique.id)
-
-    fluidPage(
-      the_datatables
-    )
+    
+    fluidPage(the_datatables)
     
   })
   
