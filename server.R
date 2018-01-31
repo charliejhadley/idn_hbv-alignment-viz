@@ -106,14 +106,12 @@ function(input, output, session) {
     
     if (nrow(data_to_display) == 0) {
       data_to_display[0, 1:2] %>%
-        datatable(
-          options = list(
-            "language" = list("emptyTable" = "Please select a position in the table below."),
-            # columnDefs = list(
-            # list(className = 'dt-center', targets = 0:2)
-            dom = "t"
-          )
-        )
+        datatable(options = list(
+          "language" = list("emptyTable" = "Please select a position in the table below."),
+          # columnDefs = list(
+          # list(className = 'dt-center', targets = 0:2)
+          dom = "t"
+        ))
       
     } else {
       data_to_display %>%
