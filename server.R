@@ -31,7 +31,7 @@ function(input, output, session) {
   output$programmatic_many_DT_UI <- renderUI({
     the_datatables <- hbv_table_data %>%
       filter(sheet == input$selected_protein) %>%
-      select(position:`Geno E`, -Reference, -sheet) %>%
+      select(position:`Geno E`, Reference,-sheet) %>%
       select(position, `Baseline number`, `Protein number`, everything()) %>%
       generate_dts(table.width = table_width,
                    alignment.table.id = alignment.dt.unique.id)
@@ -102,7 +102,7 @@ function(input, output, session) {
       filter(sheet == input$selected_protein) %>%
       select(-sheet) %>%
       filter(position %in% selected_positions) %>%
-      select(-position, -colour)
+      select(-position,-colour)
     
     if (nrow(data_to_display) == 0) {
       data_to_display[0, 1:2] %>%
