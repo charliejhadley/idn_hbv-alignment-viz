@@ -114,7 +114,11 @@ function(input, output, session) {
         ))
       
     } else {
-      data_to_display %>%
+      switch(input$selected_protein,
+             "HBV S" = data_to_display %>%
+               select(-`RAM/VEM/uncertain significance`),
+             "HBV Pol" = data_to_display %>%
+               select(-`VEM/HBIgM/Uncertain significance`)) %>%
         datatable(
           rownames = FALSE,
           extensions = 'FixedColumns',
