@@ -23,7 +23,7 @@ sequence_region_colours <- tribble(
   "Reverse transcriptase" , "#ccfecc", TRUE, FALSE,
   "RNAse H" , "#f9fd74", TRUE, FALSE,
   "Spacer" , "#f4b084", TRUE, FALSE,
-  "terminal protein" , "#bdd7ee", TRUE, FALSE,
+  "Terminal protein" , "#bdd7ee", TRUE, FALSE,
   "Pre-S1" , "#fe6600", FALSE, TRUE,
   "Pre-S2" , "#00b0f0", FALSE, TRUE,
   "S" , "#a9d08e", FALSE, TRUE,
